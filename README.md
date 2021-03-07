@@ -71,13 +71,13 @@ Genuine transactions are heavily right-skewed as seen in huge outliers at high a
 
 #### Preprocessing
 
-<u>Scaling Data</u>
+<ins>Scaling Data</ins>
 
 I considered `StandardScaler`, `MinMaxScaler` and `RobustScaler` to scale the data. Each of these scales differently.`MinMaxScaler` bounds the data, preserves the shape of the original distribution and doesn't reduce the importance of outliers. `RobustScaler` reduces effects of outliers relative to `MinMaxScaler`. `StandardScaler` if there is a need for a relatively normal distribution (Hale, 2019).
 
 Since I have already removed outliers and do not need to bound the data to a specific range, I will use `StandardScaler`.
 
-<u>Imbalanced Classes</u>
+<ins>Imbalanced Classes</ins>
 
 The most basic approach to balance classes is random oversampling/undersampling, which randomly duplicates/deletes examples in the minority/majority class, respectively. 
 
@@ -97,13 +97,13 @@ Rather than just randomly duplicating minority samples, `SMOTE` synthesizes elem
  
 In considering the metrics to evaluate the model, I first look at the prediction error (Type 1 or Type 2 error)
 
-<u>Type 1 error</u>
+<ins>Type 1 error</ins>
 
 Type 1 error is the false positive rate (FPR) which is the fraction of false alerts based on model predictions. This is when the model classifies a transaction as fraudulent when it actually is not. 
 
 Considering the implications of a Type 1 error, the bank would have to cancel credit cards, which means administrative costs. Customers may be dissatisfied knowing thier cards have been cancelled when the card was not tampered with anyway. This may affect the credibility of the bank. 
 
-<u>Type 2 error</u>
+<ins>Type 2 error</ins>
 
 Type 2 error is the false negative rate (FNR) which is the fraction of missed detection based on model predictions. This is when the model classifies a fraudulent transaction as genuine.
 
@@ -124,11 +124,16 @@ and determine the best algorithm using the nested cross validated roc-auc score.
 
 *Figure 4: Cross-validated AUC scores across algorithms*
 
-Using the `Random Forest Classifier` model, I ran the test data and the model was able to achieve an auc score of 98.1% (Figure 5). This means that the model was able to achieve 98.1% accurate classification of fraudulent transactions.
+Using the `Random Forest Classifier` model, I ran the test data and the model was able to achieve an auc score of 98.3% (Figure 5 and Figure 6). This means that the model was able to achieve 98.3% accurate classification of fraudulent transactions.
 
 ![](images/test-score.JPG)
 
 *Figure 5: AUC score on Test Set*
+
+![](images/roc-auc.JPG)
+
+*Figure 6: ROC-AUC curve*
+
 
 ###  Summary
 
