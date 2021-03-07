@@ -130,7 +130,7 @@ Using the `Random Forest Classifier` model, I ran the test data and the model wa
 
 *Figure 5: AUC score on Test Set*
 
-![](images/roc-auc.JPG)
+![](images/auc-curve.JPG)
 
 *Figure 6: ROC-AUC curve*
 
